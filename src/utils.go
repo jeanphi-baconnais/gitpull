@@ -14,25 +14,8 @@ func IsValidDir(dirName string) bool {
 
 func isRealDir(dir string) bool {
 	result := false
-	/*
 
-	result = result || !strings.HasPrefix(dir, ".")
-	result = result || strings.Compare(dir,"target") != 0
-	result = result || strings.Compare(dir,".idea") != 0
-	result = result || strings.Compare(dir,"node_modules") != 0
-	result = result || strings.Compare(dir,"cache") != 0
-
-			result = result && dir.IsDir()
-			result = result && !strings.HasPrefix(dir, ".")
-			result = result && strings.Compare(dir,"target") != 0
-			result = result && strings.Compare(dir,".idea") != 0
-			result = result && strings.Compare(dir,"node_modules") != 0
-			result = result && strings.Compare(dir,"cache") != 0
-
-
-	*/
-
-	if !strings.HasPrefix(dir, ".") && strings.Compare(dir,"target") != 0 && strings.Compare(dir,".idea") != 0 && strings.Compare(dir,"node_modules") != 0 && strings.Compare(dir,"cache") != 0 && strings.Compare(dir,"pkg") != 0 {
+	if !strings.HasPrefix(dir, ".") && strings.Compare(dir, "target") != 0 && strings.Compare(dir, ".idea") != 0 && strings.Compare(dir, "node_modules") != 0 && strings.Compare(dir, "cache") != 0 && strings.Compare(dir, "pkg") != 0 {
 		result = true
 	}
 
