@@ -21,7 +21,7 @@ func getCurrentBranch(repo string) (string, error) {
 	stdout, err := cmd.Output()
 
 	if err != nil {
-		fmt.Println("⁉️  🍄 Git status en error 🐛 on this repository ", repo, " - ", err.Error())
+		fmt.Println("⁉️  🍄 Git status in error 🐛 on this repository ", repo, " - ", err.Error())
 		return "", err
 	}
 
@@ -43,7 +43,7 @@ func gitPull(repo string, branch string) {
 	stdout, err := cmd.Output()
 
 	if err != nil {
-		fmt.Println("⁉️  🍄 Git pull en error 🐛 on this repository ",repo, " - ", err.Error())
+		fmt.Println("⁉️  🍄 Git pull in error 🐛 on this repository ", repo, " - ", err.Error())
 		return
 	}
 
