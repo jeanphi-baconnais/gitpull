@@ -1,10 +1,15 @@
-package main
+package git
 
 import (
 	"fmt"
+	"io/ioutil"
+	"jpbaconnais/git-pull/utils"
 	"os/exec"
 	"strings"
 )
+
+
+var repos = make(map[int]string)
 
 func LaunchGitOperations(repo string) {
 	fmt.Println("\n   🐢 Launch Git operations on the repo ", repo)
@@ -49,4 +54,31 @@ func gitPull(repo string, branch string) {
 
 	fmt.Print("👉 🧚‍♀️ Git pull ", repo, " : ", string(stdout))
 
+}
+
+func ReadDirectory(root string) ([]string, error) {
+	var files []string
+	fmt.Println("🔎 Git-pull is reading this directory ", root)
+
+	directories, err := ioutil.ReadDir(root)
+
+	if err != nil {
+		fmt.Println("error reading this directory ", root, " - err ", err)
+		return files, err
+	}
+
+	for _, dir := range directories {
+		if dir.IsDir() {
+
+			if utils.IsValidGitDir(dir.Name()) {
+				LaunchGitOperations(root + dir.Name())
+
+			} else {
+				fmt.Println("======> ", dir.Name())
+				ReadDirectory(root+"/"+dir.Name())
+			}
+		}
+	}
+
+	return files, nil
 }
